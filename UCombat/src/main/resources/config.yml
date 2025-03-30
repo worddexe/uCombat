@@ -1,0 +1,80 @@
+# uCombat Configuration File
+
+combat:
+  tag-duration: 15 # Duration (in seconds) a player remains tagged after combat.
+  punish-logout: true # Punish players who log out during combat.
+  punish-commands: true # Punish players attempting restricted commands during combat.
+  punishments:
+    logout:
+      action: 'kill' # Actions: 'kill', 'drop-items', 'ban', 'custom-command'
+      custom-command: '' # Command to execute if action is 'custom-command'.
+    commands:
+      action: 'cancel' # Actions: 'cancel', 'warn', 'kill'
+      warning-message: '&cYou cannot use this command during combat!'
+  restricted-commands:
+    - 'spawn'
+    - 'home'
+    - 'warp'
+    - 'tpaccept'
+  allow-ender-pearls: false # Allow ender pearl usage during combat.
+  block-interactions: true # Prevent block placing/breaking during combat.
+  item-pickup: false # Allow item pickup during combat.
+  item-drop: false # Allow item dropping during combat.
+  elytra-usage: false # Allow elytra usage during combat.
+  potion-effects:
+    prevent-on-tag:
+      - 'INVISIBILITY'
+      - 'SPEED'
+    allow-during-combat:
+      - 'STRENGTH'
+      - 'REGENERATION'
+
+notifications:
+  bossbar:
+    enabled: true
+    color: 'RED' # Colors: 'PINK', 'BLUE', 'RED', 'GREEN', 'YELLOW', 'PURPLE', 'WHITE'
+    style: 'SEGMENTED_10' # Styles: 'PROGRESS', 'NOTCHED_6', 'NOTCHED_10', 'NOTCHED_12', 'NOTCHED_20'
+  actionbar:
+    enabled: true
+    message: '&cYou are in combat! Do not log out.'
+  chat:
+    enabled: true
+    message: '&cYou have been tagged in combat. Logging out will result in punishment.'
+
+rewards:
+  enable: false
+  player-kill:
+    commands:
+      - 'eco give %killer% 100'
+      - 'give %killer% diamond 1'
+  mob-kill:
+    enabled: false
+    entities:
+      ZOMBIE:
+        commands:
+          - 'eco give %player% 10'
+      SKELETON:
+        commands:
+          - 'eco give %player% 15'
+
+newbie-protection: # Prevents players from attacking new players for time set in "duration" (seconds)
+  enable: false
+  duration: 3600 # Duration in seconds (e.g., 3600s = 1 hour)
+  disable-on-attack: true # Disable protection if the newbie attacks another player.
+
+cheat-prevention:
+  prevent-fly: true # Disable flying during combat.
+  prevent-teleport: true # Disable teleportation during combat.
+  prevent-gamemode-change: true # Disable gamemode changes during combat.
+
+loot-protection:
+  enable: false
+  protection-duration: 30 # Duration in seconds items are protected after drop.
+
+world-guard-integration:
+  enable: true
+  no-tag-regions:
+    - 'spawn'
+    - 'safezone'
+  prevent-entry-regions:
+    - 'arena'
